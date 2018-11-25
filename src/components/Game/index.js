@@ -78,13 +78,9 @@ export default ({ data }) => {
     [degrees]
   );
 
-  const winnerLabel = winner && winner.label;
-
-  const isGameEnded = winner;
-
   return (
     <S.Game>
-      {isGameEnded && <Confetti />}
+      {winner && <Confetti />}
       <S.GameHeader>
         <S.Title>La famiglia Luatti</S.Title>
       </S.GameHeader>
@@ -107,16 +103,16 @@ export default ({ data }) => {
             }}
           />
         </S.Rotate>
-        <S.RotationResult isGameEnded={isGameEnded} color={winner && winner.color}>
+        <S.RotationResult isGameEnded={winner} color={winner && winner.color}>
           <S.Line />
-          <S.Winner isGameEnded={isGameEnded}>
+          <S.Winner isGameEnded={winner}>
             <S.WinnerLabel>{winner && winner.label}</S.WinnerLabel>
-            <S.WinnerMessage isGameEnded={isGameEnded}>
+            <S.WinnerMessage isGameEnded={winner}>
               {winner && winner.message}
             </S.WinnerMessage>
           </S.Winner>
 
-          {!isGameEnded && degrees.toFixed(2)}
+          {!winner && degrees.toFixed(2)}
         </S.RotationResult>
       </S.RotateContainer>
     </S.Game>
