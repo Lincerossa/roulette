@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-const headerHeight = "4rem";
-
 export const Game = styled.div``;
 
 export const GameHeader = styled.div`
@@ -10,10 +8,10 @@ export const GameHeader = styled.div`
 `;
 
 export const Title = styled.div`
-  margin-bottom: 0.5rem
+  margin-bottom: 0.5rem;
   text-align: center;
   font-size: 1.25rem;
-  letter-spacing: .125rem
+  letter-spacing: .125rem;
   font-family: sans-serif;
 `;
 
@@ -25,11 +23,16 @@ export const RotateContainer = styled.div`
   justify-content: center;
 `;
 
-export const Rotate = styled.div`
-  display: inline-block;
+
+export const Rotate = styled.div.attrs({
+  style: ({ rotate }) => ({
+    transform: `rotate(${rotate}deg)`
+  }),
+})` display: inline-block;
   position: absolute;
-  transform: rotate(-${props => props.rotate}deg);
-`;
+`
+
+
 
 export const RotationResult = styled.div`
   width: ${props => (props.isGameEnded ? "12rem" : "5rem")};
