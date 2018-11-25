@@ -10,7 +10,7 @@ const maxReachableDegrees = Math.random([0, 1]) * maxHypotheticalSpeed;
 const duration = 8;
 
 
-const getGaussian = t =>
+const getGaussianValue = t =>
   t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
 
 const getWinner = (data, degrees) => {
@@ -39,6 +39,12 @@ const getWinner = (data, degrees) => {
   return winner;
 };
 
+  // ritorna valore tra 0 e 1
+const getNormalizedTime = ({timer, initialTime, duration}) => {
+  const currentTime = timer - initialTime
+  return (currentTime / 1000) / duration
+}
+
 export default ({ data }) => {
   const [degrees, setDegrees] = useState(0);
   const [initialTime, setInitialTime] = useState(0);
@@ -46,16 +52,15 @@ export default ({ data }) => {
 
   function handleUpdateDegrees(timer) {
     if (!initialTime) {
-      setInitialTime(0.00001);
-      setDegrees(0.00001);
-      return;
+      setInitialTime(timer);
     }
 
-    const currentTime = (timer - initialTime) / 1000;
-    const gaussian = getGaussian(currentTime / duration);
+    const gaussianValue = getGaussianValue(
+      getNormalizedTime({timer, duration, initialTime}
+    ));
 
-    if (gaussian < 1) {
-      setDegrees(maxReachableDegrees * gaussian);
+    if (gaussianValue < 1) {
+      setDegrees(maxReachableDegrees * gaussianValue);
       return;
     }
 
@@ -73,10 +78,9 @@ export default ({ data }) => {
     [degrees]
   );
 
-  const winnerColor = winner && winner.color;
-  const winnerMessage = winner && winner.message;
   const winnerLabel = winner && winner.label;
-  const isGameEnded = winnerColor && winnerMessage && winnerLabel;
+
+  const isGameEnded = winner;
 
   return (
     <S.Game>
@@ -103,12 +107,12 @@ export default ({ data }) => {
             }}
           />
         </S.Rotate>
-        <S.RotationResult isGameEnded={isGameEnded} color={winnerColor}>
+        <S.RotationResult isGameEnded={isGameEnded} color={winner && winner.color}>
           <S.Line />
           <S.Winner isGameEnded={isGameEnded}>
-            <S.WinnerLabel>{winnerLabel}</S.WinnerLabel>
+            <S.WinnerLabel>{winner && winner.label}</S.WinnerLabel>
             <S.WinnerMessage isGameEnded={isGameEnded}>
-              {winnerMessage}
+              {winner && winner.message}
             </S.WinnerMessage>
           </S.Winner>
 
