@@ -3,8 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3"
+    "react": "16.7.0-alpha.0",
+    "react-dom": "^16.7.0-alpha.0",
+    "gaussian": "1.1.0",
+    "raphael": "2.2.7",
+    "react-confetti": "2.3.0",
+    "react-scripts": "2.0.3",
+    "react-sizeme": "2.5.2",
+    "react-spring": "6.1.6",
+    "react-vis": "1.11.5",
+    "styled-components": "4.1.1"
   },
   "devDependencies": {
     "react-scripts": "2.1.1"
