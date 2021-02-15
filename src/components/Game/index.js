@@ -45,7 +45,8 @@ const getNormalizedTime = ({timer, initialTime, duration}) => {
   return (currentTime / 1000) / duration
 }
 
-export default ({ data }) => {
+
+const Game = ({ data }) => {
   const [degrees, setDegrees] = useState(0);
   const [initialTime, setInitialTime] = useState(0);
   const [winner, setWinner] = useState(null);
@@ -86,7 +87,7 @@ export default ({ data }) => {
       </S.GameHeader>
 
       <S.RotateContainer>
-        <S.Rotate rotate={degrees.toFixed(2)}>
+        <S.Rotate style={{transform: `rotate(-${degrees.toFixed(2)}deg)`}}>
           <RadialChart
             width={350}
             height={350}
@@ -96,8 +97,9 @@ export default ({ data }) => {
             colorType="literal"
             showLabels={true}
             labelsStyle={{
-              fontSize: "9px",
+              fontSize: "11px",
               fontWeight: "bold",
+              fill: "white",
               textTransform: "uppercase",
               letterSpacing: ".04rem"
             }}
@@ -118,3 +120,6 @@ export default ({ data }) => {
     </S.Game>
   );
 };
+
+
+export default Game

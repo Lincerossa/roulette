@@ -1,15 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { Game } from './components';
-import * as serviceWorker from './serviceWorker';
-
-
-
-
-// single page
-// single route
-// no ssr (nextJs or others)
-// ...just a game!
+import './App.css';
+import Game from './components/Game';
 
 const items = [
   {
@@ -25,7 +16,7 @@ const items = [
   {
     label: "mamma",
     message: "Di mamma ce n'è una, e la Licia batte pure quella",
-    color: "yellow"
+    color: "#ec5991"
   },
   {
     label: "papà",
@@ -67,7 +58,7 @@ const items = [
   {
     label: "tim",
     message: "Per gli amici Tommy ahah",
-    color: "wheat"
+    color: "#110f1e"
   },
   {
     label: "mary",
@@ -80,22 +71,10 @@ const items = [
 
 const data = items.map(item => ({
   angle: 360 / items.length,
-  color: item.color,
   ...item
 }))
 
 
+const App = () => <Game data={data} />
 
-
-
-
-
-
-ReactDOM.render(<Game
-  data={data}
-/>, document.getElementById('root'));
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+export default App

@@ -1,16 +1,20 @@
 import styled from "styled-components";
 
-export const Game = styled.div``;
+export const Game = styled.div`
+  background-color: #081329;
+  padding: 1rem;
+`;
 
 export const GameHeader = styled.div`
   height: 4rem;
-  border: 1px solid red;
 `;
 
 export const Title = styled.div`
-  margin-bottom: 0.5rem;
   text-align: center;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
+  color: white;
+  font-family: sans-serif;
+  font-weight: 600;
   letter-spacing: .125rem;
   font-family: sans-serif;
 `;
@@ -24,15 +28,10 @@ export const RotateContainer = styled.div`
 `;
 
 
-export const Rotate = styled.div.attrs({
-  style: ({ rotate }) => ({
-    transform: `rotate(${rotate}deg)`
-  }),
-})` display: inline-block;
+export const Rotate = styled.div`
+  display: inline-block;
   position: absolute;
 `
-
-
 
 export const RotationResult = styled.div`
   width: ${props => (props.isGameEnded ? "12rem" : "5rem")};
@@ -44,7 +43,6 @@ export const RotationResult = styled.div`
   height: ${props => (props.isGameEnded ? "12rem" : "5rem")};
   color: black;
   transition: all 0.5s;
-
   background: ${props => (props.color ? props.color : "white")};
 `;
 
@@ -57,7 +55,7 @@ export const Winner = styled.div`
 export const Line = styled.div`
   position: absolute;
   border-left: 5px solid transparent;
-  border-top: 30px solid black;
+  border-top: 30px solid white;
   border-right: 5px solid transparent;
   top: 0;
   left: 50%;
@@ -68,14 +66,17 @@ export const WinnerLabel = styled.div`
   text-transform: uppercase;
   font-size: 1.25rem;
   margin-bottom: 0.25rem;
+  font-weight: 600;
+  color: white;
   padding-bottom: 0.25rem;
   border-bottom: 1px solid;
 `;
 export const WinnerMessage = styled.div`
   padding: 0 2rem;
   font-family: sans-serif;
-  font-size: 0.75rem;
+  font-size: .75rem;
   text-align: center;
+  color: white;
   opacity: ${props => (props.isGameEnded ? 1 : 0)};
   transition: all 10s;
 `;
