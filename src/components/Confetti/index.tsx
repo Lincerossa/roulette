@@ -18,7 +18,7 @@ export default sizeMe({
             height: "100%"
           }}
         >
-          <Confetti {...this.props.size} />
+          <Confetti  />
         </div>
       );
     }

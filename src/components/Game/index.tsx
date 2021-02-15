@@ -5,15 +5,20 @@ import Confetti from '../Confetti'
 
 import * as S from "./styles";
 
+interface Winner {
+  from: number,
+  to: number
+  angle: number
+}
+
 const maxHypotheticalSpeed = 1000;
 const maxReachableDegrees = Math.random([0, 1]) * maxHypotheticalSpeed;
 const duration = 8;
 
-
-const getGaussianValue = t =>
+const getGaussianValue : (t:number) => number = t =>
   t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
 
-const getWinner = (data, degrees) => {
+const getWinner : (data: Winner[], degrees:number) => Winner = (data, degrees) => {
   const normalizedRotation = degrees % 360;
 
   const rangedData = data.map((e, index) => {

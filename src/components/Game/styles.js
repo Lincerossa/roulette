@@ -40,16 +40,16 @@ export const RotationResult = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  height: ${props => (props.isGameEnded ? "12rem" : "5rem")};
+  height: ${(props : {isGameEnded: boolean}) => (props.isGameEnded ? "12rem" : "5rem")};
   color: black;
   transition: all 0.5s;
-  background: ${props => (props.color ? props.color : "white")};
+  background: ${(props : {color: string}) => (props.color ? props.color : "white")};
 `;
 
 export const Winner = styled.div`
-  opacity: ${props => (props.isGameEnded ? 1 : 0)};
+  opacity: ${(props : {isGameEnded: boolean}) => (props.isGameEnded ? 1 : 0)};
   transition: all 5s;
-  position: ${props => (props.isGameEnded ? "relative" : "absolute")};
+  position: ${(props : {isGameEnded: boolean}) => (props.isGameEnded ? "relative" : "absolute")};
 `;
 
 export const Line = styled.div`
@@ -77,6 +77,6 @@ export const WinnerMessage = styled.div`
   font-size: .75rem;
   text-align: center;
   color: white;
-  opacity: ${props => (props.isGameEnded ? 1 : 0)};
+  opacity: ${(props : {isGameEnded: boolean}) => (props.isGameEnded ? 1 : 0)};
   transition: all 10s;
 `;
